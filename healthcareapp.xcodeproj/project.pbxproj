@@ -24,6 +24,7 @@
 		2118CAB125EA101C000D7F2B /* NotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2118CAB025EA101C000D7F2B /* NotificationController.swift */; };
 		2118CAB325EA101C000D7F2B /* ComplicationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2118CAB225EA101C000D7F2B /* ComplicationController.swift */; };
 		2118CAB525EA101F000D7F2B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2118CAB425EA101F000D7F2B /* Assets.xcassets */; };
+		21262B5325F2FF8F00BF4990 /* HealthKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 21262B5225F2FF8E00BF4990 /* HealthKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -80,6 +81,16 @@
 			name = "Embed Watch Content";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		2190E4F625EF02FE00C7F5BD /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
@@ -109,6 +120,9 @@
 		2118CAB425EA101F000D7F2B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2118CAB625EA101F000D7F2B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2118CAB725EA101F000D7F2B /* PushNotificationPayload.apns */ = {isa = PBXFileReference; lastKnownFileType = text; path = PushNotificationPayload.apns; sourceTree = "<group>"; };
+		21262B5125F2FF8E00BF4990 /* healthcareapp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = healthcareapp.entitlements; sourceTree = "<group>"; };
+		21262B5225F2FF8E00BF4990 /* HealthKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HealthKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.4.sdk/System/Library/Frameworks/HealthKit.framework; sourceTree = DEVELOPER_DIR; };
+		21C32CF925EA117C005A6548 /* healthcareapp WatchKit Extension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "healthcareapp WatchKit Extension.entitlements"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -116,6 +130,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				21262B5325F2FF8F00BF4990 /* HealthKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -152,6 +167,7 @@
 				2118CA9C25EA1018000D7F2B /* healthcareapp WatchKit App */,
 				2118CAAB25EA101C000D7F2B /* healthcareapp WatchKit Extension */,
 				2118CA6F25EA1014000D7F2B /* Products */,
+				21C32CFA25EA117C005A6548 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -170,6 +186,7 @@
 		2118CA7025EA1014000D7F2B /* healthcareapp */ = {
 			isa = PBXGroup;
 			children = (
+				21262B5125F2FF8E00BF4990 /* healthcareapp.entitlements */,
 				2118CA7125EA1014000D7F2B /* AppDelegate.swift */,
 				2118CA7325EA1014000D7F2B /* SceneDelegate.swift */,
 				2118CA7525EA1014000D7F2B /* ViewController.swift */,
@@ -212,6 +229,7 @@
 		2118CAAB25EA101C000D7F2B /* healthcareapp WatchKit Extension */ = {
 			isa = PBXGroup;
 			children = (
+				21C32CF925EA117C005A6548 /* healthcareapp WatchKit Extension.entitlements */,
 				2118CAAC25EA101C000D7F2B /* InterfaceController.swift */,
 				2118CAAE25EA101C000D7F2B /* ExtensionDelegate.swift */,
 				2118CAB025EA101C000D7F2B /* NotificationController.swift */,
@@ -221,6 +239,14 @@
 				2118CAB725EA101F000D7F2B /* PushNotificationPayload.apns */,
 			);
 			path = "healthcareapp WatchKit Extension";
+			sourceTree = "<group>";
+		};
+		21C32CFA25EA117C005A6548 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				21262B5225F2FF8E00BF4990 /* HealthKit.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -305,6 +331,7 @@
 				2118CAA325EA101C000D7F2B /* Sources */,
 				2118CAA425EA101C000D7F2B /* Frameworks */,
 				2118CAA525EA101C000D7F2B /* Resources */,
+				2190E4F625EF02FE00C7F5BD /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -615,9 +642,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
+				CODE_SIGN_ENTITLEMENTS = "healthcareapp WatchKit Extension/healthcareapp WatchKit Extension.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 3X7G27TR7F;
 				INFOPLIST_FILE = "healthcareapp WatchKit Extension/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -629,7 +658,7 @@
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 4;
-				WATCHOS_DEPLOYMENT_TARGET = 7.2;
+				WATCHOS_DEPLOYMENT_TARGET = 6.2;
 			};
 			name = Debug;
 		};
@@ -637,9 +666,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
+				CODE_SIGN_ENTITLEMENTS = "healthcareapp WatchKit Extension/healthcareapp WatchKit Extension.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 3X7G27TR7F;
 				INFOPLIST_FILE = "healthcareapp WatchKit Extension/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -652,7 +683,7 @@
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 4;
 				VALIDATE_PRODUCT = YES;
-				WATCHOS_DEPLOYMENT_TARGET = 7.2;
+				WATCHOS_DEPLOYMENT_TARGET = 6.2;
 			};
 			name = Release;
 		};
@@ -666,13 +697,14 @@
 				DEVELOPMENT_TEAM = 3X7G27TR7F;
 				IBSC_MODULE = healthcareapp_WatchKit_Extension;
 				INFOPLIST_FILE = "healthcareapp WatchKit App/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.6;
 				PRODUCT_BUNDLE_IDENTIFIER = jp.techacademy.genya.wakaki.healthcareapp.watchkitapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 4;
-				WATCHOS_DEPLOYMENT_TARGET = 7.2;
+				WATCHOS_DEPLOYMENT_TARGET = 6.2;
 			};
 			name = Debug;
 		};
@@ -686,6 +718,7 @@
 				DEVELOPMENT_TEAM = 3X7G27TR7F;
 				IBSC_MODULE = healthcareapp_WatchKit_Extension;
 				INFOPLIST_FILE = "healthcareapp WatchKit App/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.6;
 				PRODUCT_BUNDLE_IDENTIFIER = jp.techacademy.genya.wakaki.healthcareapp.watchkitapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = watchos;
@@ -693,7 +726,7 @@
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 4;
 				VALIDATE_PRODUCT = YES;
-				WATCHOS_DEPLOYMENT_TARGET = 7.2;
+				WATCHOS_DEPLOYMENT_TARGET = 6.2;
 			};
 			name = Release;
 		};
@@ -702,10 +735,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = healthcareapp/healthcareapp.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 3X7G27TR7F;
 				INFOPLIST_FILE = healthcareapp/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -723,10 +757,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = healthcareapp/healthcareapp.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 3X7G27TR7F;
 				INFOPLIST_FILE = healthcareapp/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -748,7 +783,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 3X7G27TR7F;
 				INFOPLIST_FILE = healthcareappTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -771,7 +806,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 3X7G27TR7F;
 				INFOPLIST_FILE = healthcareappTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -791,10 +826,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 3X7G27TR7F;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = healthcareappUITests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -813,10 +849,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 3X7G27TR7F;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = healthcareappUITests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
